@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     title : {
         textAlign : 'center',
-        fontSize : 50,
+        fontSize : 52,
         color : colors.col1,
         marginVertical : 10,
         fontWeight : '200',
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
         width : '80%',
         height : '30%',
         alignItems : 'center',
-        // backgroundColor : '#fff',
     },
 
     logo : {
@@ -61,6 +60,23 @@ const styles = StyleSheet.create({
       color : colors.col1,
       textAlign : 'center',
     },
+
+    btnout : {
+      flexDirection : 'row',
+    },
+
+    btn :{
+      fontSize : 10,
+      color : colors.text1,
+      textAlign : 'center',
+      marginVertical : 30,
+      marginHorizontal : 10,
+      fontWeight : '700',
+      backgroundColor : '#fff',
+      borderRadius : 10,
+      padding : 10,
+      paddingHorizontal : 20,
+    }
 })
 
 export default WelcomeScreen
