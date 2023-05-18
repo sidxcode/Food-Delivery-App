@@ -1,50 +1,77 @@
-import React, { useState } from 'react'
-import {StyleSheet, Text, View, TextInput, TouchableOpacity} from'react-native'
-import { titles, colors, btn1 } from '../../globals/styles'
-import { AntDesign, Octicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons';
+import React, {useState} from 'react'
+import { StyleSheet, View, Text, TextInput, TouchableOpacity } from'react-native'
+import {titles, colors, btn1, hr80} from '../../globals/styles'
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Octicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const LoginScreen = () => {
-    const [emailfocus, setEmailFocus] = useState(false);
-    const [passwordfocus, setPasswordFocus] = useState(false);
-    const [showPassword, setShowPassword] = useState(false);
-
-
+    const [emailfocus, setEmailFocus] = React.useState(false);
+    const [passwordfocus, setPasswordFocus] = React.useState(false);
+    const [showPassword, setShowPassword] = React.useState(false);
 
   return (
     <View style = {styles.container}>
-        <Text style = {styles.head1}> Sign In</Text>
+        <Text style = {styles.head1}>Sign In</Text>
         <View style = {styles.inputout}>
-        <AntDesign name="user" size={24} 
-        color={emailfocus === true ? colors.text1 : colors.text2} />
-            <TextInput style = {styles.input} placeholder='Email'
+            <AntDesign name="user" size={24} color={emailfocus === true? colors.text1 : colors.text2} />
+            <TextInput style = {styles.input} placeholder = 'Email' 
             onFocus={() => {
                 setEmailFocus(true)
                 setPasswordFocus(false)
                 setShowPassword(false)
-            }}
-            />
+            }}/>
         </View>
         <View style = {styles.inputout}>
-            <MaterialCommunityIcons name="lock-outline" size={24} 
-            color={passwordfocus === true? colors.text1 : colors.text2} />
-            <TextInput style = {styles.input} placeholder='Password'
+            <MaterialIcons name="lock-outline" size={24} color={passwordfocus === true ? colors.text1 : colors.text2} />
+            <TextInput style = {styles.input} placeholder = 'Password' 
             onFocus={() => {
-                setEmailFocus(false)
                 setPasswordFocus(true)
+                setEmailFocus(false)
+            }}
+            secureTextEntry={showPassword === false? true : false}
+            />
+            <Octicons name={showPassword === true ? "eye" : "eye-closed" } size={24} color="black" 
+            onPress={() => {
+                setShowPassword(!showPassword)
             }}
             
-            secureTextEntry = {showPassword === false ? true : false}
             />
-            <Octicons name = {showPassword == false ? 'eye-closed' : 'eye'}
-            size = {24} color = 'black' 
-            onPress={() => setShowPassword(!showPassword)} />
         </View>
-        <TouchableOpacity style = {btn1}>
-
+        <TouchableOpacity style={btn1}>
+            <Text style ={{ color : colors.col1, fontSize: titles.btntxt,
+            fontWeight: "bold"}}>Sign in
+            </Text>
         </TouchableOpacity>
+
+        <Text style = {styles.forgot}>Forgot Password?</Text>
+        <Text style = {styles.or}>OR</Text>
+        <Text style = {styles.gftxt}>Sign In With</Text>
+
+        <View style = {styles.gf}>
+            <TouchableOpacity>
+                <View style={styles.gficon}>
+                <AntDesign name="google" size={24} 
+                color="#EA4335" />
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity>
+                <View style={styles.gficon}>
+                <FontAwesome5 name="facebook-f" size={24}
+                color="#426782" />
+                </View>
+            </TouchableOpacity>
+        </View>
+        <View style = {hr80}/>
+        <Text>Don't have an account?
+            <Text style ={styles.signup}> Sign up</Text>
+        </Text>
     </View>
   )
+  
 }
+
 
 const styles = StyleSheet.create({
     container : {
@@ -67,14 +94,50 @@ const styles = StyleSheet.create({
         borderRadius : 10,
         paddingHorizontal : 10,
         paddingVertical : 10,
-        alignSelf : 'center',
+        // alignSelf : 'center',
         elevation : 20,
     },
+
     input : {
         fontSize : 18,
         marginLeft : 10,
         width : '80%',
+    },
+
+    forgot : {
+        color : colors.text2,
+        marginTop : 20,
+        marginBottom : 10,
+    },
+
+    or :{
+        color : colors.text1,
+        marginVertical : 10,
+        fontWeight : 'bold',
+    },
+
+    gftxt : {
+        color : colors.text2,
+        marginVertical : 10,
+        fontSize : 25,
+    },
+
+    gf : {
+        flexDirection : 'row',
+    },
+
+    gficon : {
+        backgroundColor : 'white',
+        width : 50,
+        margin : 10,
+        borderRadius : 10,
+        padding : 10,
+        alignItems : 'center',
+        elevation : 20,
+    },
+    signup : {
+        color : colors.text1,
+
     }
 })
-
 export default LoginScreen

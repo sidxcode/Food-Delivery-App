@@ -11,9 +11,9 @@ module.exports = {
     },
     btn1: {
         width : '80%',
-        height : '50',
+        height : 50,
         backgroundColor : 'red',
-        borderRadius : '10',
+        borderRadius : 10,
         alignItems : 'center',
         justifyContent : 'center',
         elevation : 10,
@@ -21,7 +21,7 @@ module.exports = {
     },
     hr80: {
         width : '100%',
-        borderBottomColor : 'white',
+        borderBottomColor : '#E0E0E0',
         borderBottomWidth : 1,
         marginVertical : 20,
     }
