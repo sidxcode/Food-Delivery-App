@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
     const [emailfocus, setEmailFocus] = React.useState(false);
     const [passwordfocus, setPasswordFocus] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
@@ -65,7 +65,8 @@ const LoginScreen = () => {
         </View>
         <View style = {hr80}/>
         <Text>Don't have an account?
-            <Text style ={styles.signup}> Sign up</Text>
+            <Text style ={styles.signup} onPress={() => navigation.navigate
+        ('signup')}> Sign up</Text>
         </Text>
     </View>
   )
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
         flex : 1,
         width : '100%',
         alignItems : 'center',
-        justifyContent : 'center'
+        justifyContent : 'center',
     },
     head1 : {
         fontSize : titles.title1,

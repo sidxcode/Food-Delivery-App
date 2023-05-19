@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native'
 import {colors, hr80} from '../../globals/styles'
 import logo from '../../../assets/logo.png'
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
   return (
     <View style={styles.container} >
       <Text style = {styles.title}>Welcome to Foodie</Text>
@@ -14,11 +14,12 @@ const WelcomeScreen = () => {
       <Text style = {styles.text}>Find the best food around you at lowest price .</Text>
       <View style = {hr80}></View>
       <View style = {styles.btnout}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate
+        ('signup')}>
         <Text style = {styles.btn}>Sign Up</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style = {styles.btn}>Login</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('login')}>
+        <Text style = {styles.btn}>Log In</Text>
       </TouchableOpacity>
       </View>
     </View>
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
         alignItems : 'center',
         justifyContent : 'center',
         elevation : 10,
-        marginVertical : 20,
     },
     title : {
         textAlign : 'center',
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     },
 
     btn :{
-      fontSize : 10,
+      fontSize : 18,
       color : colors.text1,
       textAlign : 'center',
       marginVertical : 30,
